@@ -30,6 +30,7 @@ public class order_details {
 
 
     private int quantity;
+    private String status;
 
 
     public void setOrders_id(int orders_id) {
@@ -46,6 +47,15 @@ public class order_details {
 
     public int getQuantity() {
         return quantity;
+    }
+
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     public orders getOrder_id(){return this.order_id;}

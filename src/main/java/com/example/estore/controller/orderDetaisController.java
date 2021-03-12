@@ -25,9 +25,11 @@ private orderDetailsService service;
         return service.getOrders();
     }
 
-    @GetMapping("/OrderById/{id}")
-    public order_details findAllOrderById(@PathVariable int id){
-        return  service.getOrderById(id);
+
+    @CrossOrigin(origins ="http://localhost:4200")
+    @PostMapping("/updateStatus")
+    public order_details updateOrderById(@RequestBody order_details id ){
+        return  service.updateStatus(id);
     }
 
 
@@ -37,4 +39,9 @@ private orderDetailsService service;
         return service.addOrders(order_details);
     }
 
+
+  /*  @PostMapping("/updateStatus")
+    public List<order_details> updatingOrderDetails(@RequestBody List<order_details> od){
+        return  service.updateStatus(od);
+    }*/
 }

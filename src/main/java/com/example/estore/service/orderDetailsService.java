@@ -7,12 +7,16 @@ import com.example.estore.entity.orders;
 import com.example.estore.entity.user;
 import com.example.estore.repository.orderDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class orderDetailsService {
@@ -31,19 +35,47 @@ public class orderDetailsService {
 
 
     public List<order_details> getOrders(){
-        return repository.findAll();
+
+        var driverOrder =  repository.findAll().stream().filter(od-> od.getStatus().equals("pending")).collect(Collectors.toList());
+
+
+        return driverOrder;
     }
 
 
 
-    public order_details getOrderById(int Id){
-        return repository.findById(Id).orElse(null);
+    public order_details updateStatus(order_details id){
+
+        order_details existingOrder = repository.findById(id.getOrders_id()).orElse(null);
+
+        existingOrder.setStatus("delivered");
+
+        return repository.save(existingOrder);
     }
 
     public List<order_details> addOrders(List<order_details> order_details){
+
+
+        for(order_details od: order_details){
+
+            od.setStatus("pending");
+        }
+
+
         return repository.saveAll(order_details);
     }
 
+
+   /* public List<order_details> updateStatus(List<order_details> status){
+
+        for(order_details od: status){
+
+            od.setStatus("pending");
+        }
+
+
+        return repository.saveAll(status);
+    }*/
 /*
     @Autowired orders orders;
     @Autowired user user;
