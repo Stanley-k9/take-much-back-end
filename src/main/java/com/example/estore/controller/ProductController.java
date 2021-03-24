@@ -15,7 +15,7 @@ public class ProductController {
     private ProductService service;
 
 
-
+@CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/addProduct")
     public Product addProduct(@RequestBody Product product){
         return  service.saveProduct(product);
@@ -27,9 +27,9 @@ public class ProductController {
     }
 
 
-    @GetMapping("/products/{count}")
-    public List<Product> findAllProducts(@PathVariable int count){
-        return service.getProducts(count);
+    @GetMapping("/products")
+    public List<Product> findAllProducts(){
+        return service.getProducts();
     }
 
 
@@ -44,11 +44,13 @@ public class ProductController {
     }
 
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/updateProduct")
     public Product updateProduct(@RequestBody Product product){
         return  service.updateProduct(product);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/deleteProduct/{id}")
     public String deleteProduct(@PathVariable int id){
       return service.deleteProduct(id);

@@ -23,8 +23,8 @@ public class ProductService {
         return repository.saveAll(products);
     }
 
-    public List<Product> getProducts(int count){
-        return repository.findAll().subList(0,count);
+    public List<Product> getProducts(){
+        return repository.findAll();
     }
 
 

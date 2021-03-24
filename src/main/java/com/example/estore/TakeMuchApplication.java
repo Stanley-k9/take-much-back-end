@@ -10,8 +10,4 @@ public class TakeMuchApplication {
 		SpringApplication.run(TakeMuchApplication.class, args);
 	}
 
-
-
-
-
 }

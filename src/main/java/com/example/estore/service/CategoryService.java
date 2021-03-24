@@ -15,10 +15,21 @@ public class CategoryService {
     private CategoryRepository repository;
 
 
-    public List<Product> getProductsByCat(String cat_title){
+    public List<category> getProductsByCat(String cat_title){
 
         return repository.findByCat(cat_title);
 
+    }
+
+
+    public  List<category> getCategory(){
+
+        return repository.findAll();
+    }
+
+    public category addCategory( category cat){
+
+        return  repository.save(cat);
     }
 }
 

@@ -36,7 +36,7 @@ public class orderDetailsService {
 
     public List<order_details> getOrders(){
 
-        var driverOrder =  repository.findAll().stream().filter(od-> od.getStatus().equals("pending")).collect(Collectors.toList());
+        var  driverOrder =  repository.findAll().stream().filter(od-> od.getStatus().equals("pending")).collect(Collectors.toList());
 
 
         return driverOrder;
