@@ -57,6 +57,11 @@ public class ProductController {
     }
 
 
+    @GetMapping("/numberOfProducts")
+    public Long listNumberOfUsers(){
+
+        return service.listNoProducts();
+    }
 
 
 

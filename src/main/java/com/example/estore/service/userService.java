@@ -35,6 +35,11 @@ public class userService {
         return new user();
     }
 
+
+
+
+
+
     public boolean LogOut(user user){
 
         user existingUser = findExistingUser(user.getEmail());
@@ -49,7 +54,6 @@ public class userService {
 
 
     public user register(user newUser) {
-
         user existingUser = findExistingUser(newUser.getEmail());
         if(existingUser != null){
             return repository.save(newUser);
@@ -85,4 +89,25 @@ public class userService {
             return new user();
         }
     }
+
+
+    public Long listNoCustomers(){
+
+        List<user> users = repository.findAll();
+
+        Long listCustomers = users.stream().filter(user1 -> user1.getType().equals("customer")).count();
+
+
+        return listCustomers;
+
+    }
+
+    public Long listNoDelivery(){
+        List<user> users = repository.findAll();
+
+        Long ListDelivery = users.stream().filter(user -> user.getType().equals("delivery")).count();
+
+        return ListDelivery;
+    }
+
 }

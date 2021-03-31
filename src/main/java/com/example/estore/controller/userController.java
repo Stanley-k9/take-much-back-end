@@ -44,7 +44,15 @@ public class userController {
 
 
 
+@GetMapping("/numberOfCustomer")
+public Long listNumberOfUsers(){
+        return service.listNoCustomers();
+}
 
+@GetMapping("/numberOfDelivery")
+        public Long listNumberOfDelivery(){
+        return service.listNoDelivery();
+    }
 
     @PostMapping("/users/logout")
     public Boolean logUserOut(@RequestBody user user) {

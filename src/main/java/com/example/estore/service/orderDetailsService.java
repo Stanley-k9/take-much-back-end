@@ -43,6 +43,12 @@ public class orderDetailsService {
     }
 
 
+    public List<order_details> allOrders(){
+
+        return repository.findAll();
+    }
+
+
 
     public order_details updateStatus(order_details id){
 
@@ -63,6 +69,11 @@ public class orderDetailsService {
 
 
         return repository.saveAll(order_details);
+    }
+
+    public Long sales(){
+
+        return repository.count();
     }
 
 

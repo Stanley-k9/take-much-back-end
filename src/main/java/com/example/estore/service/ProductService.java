@@ -18,6 +18,11 @@ public class ProductService {
         return repository.save(product);
     }
 
+    public Long listNoProducts(){
+
+        return repository.count();
+    }
+
     public List<Product> saveProducts(List<Product> products){
 
         return repository.saveAll(products);

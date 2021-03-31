@@ -26,6 +26,13 @@ private orderDetailsService service;
     }
 
 
+        @GetMapping("/allOrders")
+    public List<order_details> findEveryOrder(){
+
+        return service.allOrders();
+    }
+
+
     @CrossOrigin(origins ="http://localhost:4200")
     @PostMapping("/updateStatus")
     public order_details updateOrderById(@RequestBody order_details id ){
@@ -44,4 +51,9 @@ private orderDetailsService service;
     public List<order_details> updatingOrderDetails(@RequestBody List<order_details> od){
         return  service.updateStatus(od);
     }*/
+
+    @GetMapping("sales")
+    public Long noOfSales(){
+        return service.sales();
+    }
 }
